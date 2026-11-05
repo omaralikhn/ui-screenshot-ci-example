@@ -13,6 +13,11 @@ body {
   box-sizing: border-box;
 }
 
+.intentional-highlight {
+  background-color: #d1fae5 !important;
+  color: #065f46 !important;
+}
+
 pre {
   font-family: 'Roboto Mono', monospace;
   margin: 0;
