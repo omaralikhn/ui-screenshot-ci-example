@@ -45,7 +45,7 @@ function AgentChat() {
   return (
     <Box data-testid="agent-chat-region" sx={{ bgcolor: '#edf2f7', minHeight: 920, p: 3 }}>
       <Stack direction="row" spacing={2} sx={{ maxWidth: 1360, mx: 'auto' }}>
-        <Paper component="main" elevation={0} sx={{ border: '1px solid #dbe5f0', flex: 1, overflow: 'hidden' }}>
+        <Paper aria-label="Agent conversation" component="main" elevation={0} sx={{ border: '1px solid #dbe5f0', flex: 1, overflow: 'hidden' }}>
           <Box sx={{ alignItems: 'center', bgcolor: '#10233f', color: 'white', display: 'flex', px: 3, py: 2 }}>
             <SmartToyOutlinedIcon sx={{ mr: 1.5 }} />
             <Box>
