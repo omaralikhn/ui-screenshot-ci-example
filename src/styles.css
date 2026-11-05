@@ -6,7 +6,7 @@ body,
 }
 
 body {
-  background: #edf2f7;
+  background: #dcecff;
 }
 
 * {
@@ -14,6 +14,7 @@ body {
 }
 
 pre {
+  color: #9f1239;
   font-family: 'Roboto Mono', monospace;
   margin: 0;
   overflow-wrap: anywhere;
