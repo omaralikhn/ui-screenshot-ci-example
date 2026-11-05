@@ -107,6 +107,7 @@ function BlueprintDetails() {
             <Box>
               <Typography fontWeight={700} variant="h4">{blueprintDetails.name}</Typography>
               <Typography color="text.secondary" sx={{ mt: 1 }} variant="body1">{blueprintDetails.summary}</Typography>
+              <Typography color="primary" sx={{ mt: 1 }} variant="body2">Monitoring enabled</Typography>
             </Box>
             <Chip color="warning" label={blueprintDetails.status} />
           </Stack>
