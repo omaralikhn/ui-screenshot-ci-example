@@ -1,0 +1,57 @@
+name: Visual regression
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  visual-regression:
+    name: Compare committed screenshots
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: 22
+
+      - name: Install Yarn Classic
+        run: npm install --global yarn@1.22.22
+
+      - name: Locate Yarn cache
+        id: yarn-cache
+        run: echo "directory=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ steps.yarn-cache.outputs.directory }}
+          key: yarn-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Cache Playwright Chromium
+        id: playwright-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
+      - run: yarn playwright install --with-deps chromium
+
+      - run: yarn visual
+
+      - name: Upload visual regression diagnostics
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: visual-regression-diagnostics
+          path: |
+            e2e/snapshots/
+            playwright-report/
+            test-results/
+          if-no-files-found: warn
+          retention-days: 14
