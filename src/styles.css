@@ -1,0 +1,21 @@
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #edf2f7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+pre {
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
