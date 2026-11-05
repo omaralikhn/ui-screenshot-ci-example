@@ -53,6 +53,7 @@ function AgentChat() {
               <Typography color="#c9d8ec" variant="body2">{agentChat.caseNumber}</Typography>
             </Box>
             <Chip label="In progress" size="small" sx={{ bgcolor: '#dbeafe', color: '#133e76', ml: 'auto' }} />
+            <Chip className="intentional-highlight" label="Review ready" size="small" sx={{ ml: 1 }} />
           </Box>
 
           <Stack spacing={2.5} sx={{ p: 3 }}>
